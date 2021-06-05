@@ -44,12 +44,20 @@ class App extends Component {
         const poll = this.state.polls.find(p => p.id === pollId);
         this.setState({selectedPoll:poll});
     }
+    handleSearch=searchTerm =>{
+
+    }
     render() {
         return (
             <Container className='my-5'>
                 <Row>
                     <Col md={4}>
-                        <Sidebar />
+                        <Sidebar
+                        polls={this.state.polls}
+                        searchTerm={this.state.searchTerm}
+                        handleSearch={this.handleSearch}
+                        selectedPoll={this.selectedPoll}
+                         />
                     </Col>
                     <Col md={8}>
                         <MainContent />

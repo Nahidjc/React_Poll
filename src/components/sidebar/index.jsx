@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
-import { Button, Input } from 'reactstrap';
+import { Button, Input, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import PollList from './poll_list';
 
 class Sidebar extends Component {
+state={
+    openModal : false
+}
+
+    toggleModal = ()=>{
+        this.setState({
+            openModal: !this.state.openModal
+        })
+
+    }
     render() {
         return (
             <div style={{background:'#efefef',padding:'10px'}}>
@@ -21,10 +32,27 @@ class Sidebar extends Component {
                >
                    New
                </Button>
-
-             
-
+               
                </div>
+               <h3>List of Polls</h3>
+               <hr />
+               <PollList
+               polls={this.props.polls}
+               selectPoll={this.props.selectPoll}
+                />
+
+                <Modal
+                isOpen={this.state.openModal}
+                toggle={this.toggleModal}
+                unmountOnClose={true}
+                
+                >
+                    <ModalHeader toggle={this.toggleModal}>
+                    Create A New Poll
+
+                    </ModalHeader>
+                    <ModalBody>This is the modal body</ModalBody>
+                </Modal>
             </div>
         );
     }

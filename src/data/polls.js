@@ -12,3 +12,4 @@ const polls = [{
     totalVote: 0,
     opinions: []
 }]
+export default polls;
