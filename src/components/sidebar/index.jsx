@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Input, Modal, ModalBody, ModalHeader } from 'reactstrap';
+import PollForm from '../poll-form';
 import PollList from './poll_list';
 
 class Sidebar extends Component {
@@ -51,7 +52,11 @@ state={
                     Create A New Poll
 
                     </ModalHeader>
-                    <ModalBody>This is the modal body</ModalBody>
+                    <ModalBody>
+                        <PollForm 
+                            submit={this.props.addNewPoll}
+                        />
+                    </ModalBody>
                 </Modal>
             </div>
         );

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import Form from './form';
 
 const defaultOptions = [
     { id: shortid.generate(), value: '', vote: 0 },
@@ -11,7 +12,8 @@ class PollForm extends Component {
     state = {
         title: '',
         description: '',
-        options: defaultOptions
+        options: defaultOptions,
+        errors: {}
     }
 
     handleChange = event => {
@@ -52,10 +54,10 @@ class PollForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const {isValid,errors} = this.validate()
+        const { isValid, errors } = this.validate()
 
-        if(isValid){
-            const { title , description, options} = this.state
+        if (isValid) {
+            const { title, description, options } = this.state
             this.props.submit({
                 title,
                 description,
@@ -63,14 +65,15 @@ class PollForm extends Component {
             })
             event.target.reset()
             this.setState({
-                title:'',
-                description:'',
-                options:defaultOptions,
-                errors:{}
+                title: '',
+                description: '',
+                options: defaultOptions,
+                errors: {},
+
             })
 
-        }else{
-            this.setState({errors})
+        } else {
+            this.setState({ errors });
         }
     }
 
@@ -117,10 +120,21 @@ class PollForm extends Component {
     }
 
     render() {
+        const { title, description, options, errors } = this.state
         return (
-            <div>
+            <Form
 
-            </div>
+                title={title}
+                description={description}
+                options={options}
+                buttonValue={this.props.buttonValue || 'Create Poll'}
+                errors={errors}
+                handleChange={this.handleChange}
+                handleOptionChange={this.handleOptionChange}
+                createOption={this.createOption}
+                deleteOption={this.deleteOptions}
+                handleSubmit={this.handleSubmit}
+            />
         );
     }
 }
