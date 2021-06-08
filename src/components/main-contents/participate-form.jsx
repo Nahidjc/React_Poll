@@ -59,13 +59,13 @@ class ParticipationForm extends Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                <div className='d-flex  justify-content-end'>
+                <div className='d-flex'>
 
                     <h4>Options</h4>
                     <Button
                         color='warning'
                         type='button'
-                        className='ml-auto'
+                        className='ms-auto'
                         onClick={this.props.toggleModal}
                     >
                         Edit
@@ -73,7 +73,7 @@ class ParticipationForm extends Component {
 
                     <Button
                         type='button'
-                        className='ml-2'
+                        className='ms-2'
                         onClick={() => this.props.deletePoll(this.props.poll.id)}
                     >
                         Delete
@@ -102,7 +102,7 @@ class ParticipationForm extends Component {
                                         color: 'white',
                                         borderRadius: '5px'
                                     }}
-                                    className='ml-auto'
+                                    className='ms-auto'
                                 >
                                     {opt.vote}
                                 </span>
@@ -114,7 +114,7 @@ class ParticipationForm extends Component {
                                         color: 'white',
                                         borderRadius: '5px'
                                     }}
-                                    className='ml-2'
+                                    className='ms-3'
                                 >
                                     {this.props.poll.totalVote > 0
 
