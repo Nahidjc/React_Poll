@@ -11,71 +11,73 @@ const MyForm = ({
     handleOptionChange,
     createOption,
     deleteOption,
-    handleSubmit }) => <Form onSubmit={handleSubmit}>
-        <FormGroup>
-            <Label for='title'>Title</Label>
-            <Input
-                name='title'
-                id='title'
-                placeholder='A Dummy Title'
-                value={title}
-                onChange={handleChange}
-                invalid={errors.title ? true : false}
+    handleSubmit }) =>
+(<Form onSubmit={handleSubmit}>
+    <FormGroup>
+        <Label for='title'>Title</Label>
+        <Input
+            name='title'
+            id='title'
+            placeholder='A Dummy Title'
+            value={title}
+            onChange={handleChange}
+            invalid={errors.title ? true : false}
 
-            />
-            {errors.title && <FormFeedback>{errors.title}</FormFeedback>}
-        </FormGroup>
-        <FormGroup>
-            <Label for='description'>Description</Label>
-            <Input
-                name='description'
-                id='description'
-                placeholder='Describe Your Poll'
-                value={description}
-                onChange={handleChange}
-                invalid={errors.description ? true : false}
+        />
+        {errors.title && <FormFeedback>{errors.title}</FormFeedback>}
+    </FormGroup>
+    <FormGroup>
+        <Label for='description'>Description</Label>
+        <Input
+            name='description'
+            id='description'
+            placeholder='Describe Your Poll'
+            value={description}
+            onChange={handleChange}
+            invalid={errors.description ? true : false}
 
-            />
-            {errors.description && <FormFeedback>{errors.description}</FormFeedback>}
-        </FormGroup>
+        />
+        {errors.description && <FormFeedback>{errors.description}</FormFeedback>}
+    </FormGroup>
 
-        <FormGroup>
-            <Label style={{ padding: '15px' }}>
-                Enter Options
+    <FormGroup>
+        <Label style={{ padding: '15px' }}>
+            Enter Options
                 <span style={{
-                    marginLeft: '30px',
-                    background: 'green',
-                    padding: '5px',
-                    color: 'white',
-                    borderRadius: '5px',
-                    cursor: 'pointer'
-                }}
-                    onClick={createOption}
-                >Add Options</span>
-            </Label>
-            {options.map((opt, index) => (
-                <div key={opt.id} className="d-flex my-2">
-                    <Input
-                        value={opt.value}
-                        onChange={e => handleOptionChange(e, index)}
-                        invalid={errors.options && errors.options[index] ? true : false}
-                    />
-                    <Button
-                        color='danger'
-                        disabled={options.length <= 2}
-                        className='ml-2'
-                        onClick={() => deleteOption(index)}
-                    >
-                        Delete
+                marginLeft: '30px',
+                background: 'green',
+                padding: '5px',
+                color: 'white',
+                borderRadius: '5px',
+                cursor: 'pointer'
+            }}
+                onClick={createOption}
+            >Add Options</span>
+        </Label>
+        {options.map((opt, index) => (
+            <div key={opt.id} className="d-flex my-2">
+                <Input
+                    value={opt.value}
+                    onChange={e => handleOptionChange(e, index)}
+                    invalid={errors.options && errors.options[index] ? true : false}
+                />
+                <Button
+                    color='danger'
+                    disabled={options.length <= 2}
+                    className='ml-2'
+                    onClick={() => deleteOption(index)}
+                >
+                    Delete
                  </Button>
 
-                </div>
-            ))}
-        </FormGroup>
-        <Button color='primary' type='submit'>
-            {buttonValue}
-        </Button>
+            </div>
+        ))}
+    </FormGroup>
+    <Button color='primary' type='submit'>
+        {buttonValue}
+    </Button>
 
-    </Form>
+</Form>
+);
 
 export default MyForm;

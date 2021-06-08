@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button, CustomInput, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap'
 
 class ParticipationForm extends Component {
+
     state = {
         name: '',
         selectedOption: '',
@@ -16,7 +17,8 @@ class ParticipationForm extends Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        const { errors, isValid } = this.validate()
+        const { errors, isValid } = this.validate();
+        console.log(errors);
 
         if (isValid) {
             this.props.getOpinion({
@@ -30,6 +32,8 @@ class ParticipationForm extends Component {
                 selectedOption: '',
                 errors: {}
             })
+        } else {
+            this.setState({ errors });
         }
     }
 
@@ -55,8 +59,9 @@ class ParticipationForm extends Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                <div className="d-flex">
-                    <h4>Options</h4>
+                <div className='d-flex'>
+
+                    <h4 className='m-2'>Options</h4>
                     <Button
                         color='warning'
                         type='button'
@@ -68,7 +73,7 @@ class ParticipationForm extends Component {
 
                     <Button
                         type='button'
-                        className='ml-auto'
+                        className='ml-2'
                         onClick={() => this.props.deletePoll(this.props.poll.id)}
                     >
                         Delete
@@ -105,13 +110,14 @@ class ParticipationForm extends Component {
                                     }}
                                     className='ml-2'
                                 >
-                                    {this.poll.totalVote > 0
+                                    {this.props.poll.totalVote > 0
 
                                         ? (
                                             (100 * opt.vote) /
                                             this.props.poll.totalVote
                                         ).toFixed(2) : 0
                                     }
+                                    %
                                 </span>
 
                             </Label>

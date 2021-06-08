@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
-import MyForm from '../poll-form/form';
+import PollForm from '../poll-form';
 import ParticipationForm from './participate-form';
 
 class MainContent extends Component {
@@ -18,14 +18,17 @@ class MainContent extends Component {
             return (
                 <div>
                     <h3>Welcome to My Application</h3>
-                    <p>You can create as many poll as you want.Click the new
-                button to create a new poll.To check details of a poll please select from the left sidebar.</p>
+                    <p>	You can create as many poll as you want. Click the new
+                    button to create a new poll.To check details of a poll
+                    please select from the left sidebar.By selecting a poll
+                    you can check it's details, participate and check others
+						opinion about this poll</p>
                 </div>
             )
         }
 
 
-        const { poll, getOption, updatePoll, deletePoll } = this.props;
+        const { poll, getOpinion, updatePoll, deletePoll } = this.props;
         return (
             <div>
                 <h3>{poll.title}</h3>
@@ -34,7 +37,7 @@ class MainContent extends Component {
                 <ParticipationForm
 
                     poll={poll}
-                    getOption={getOption}
+                    getOpinion={getOpinion}
                     toggleModal={this.toggleModal}
                     deletePoll={deletePoll}
                 />
@@ -44,11 +47,12 @@ class MainContent extends Component {
                     unmountOnClose={true}
                 >
                     <ModalHeader toggle={this.toggleModal}>
-                        Update Modal
+                        Update Poll
 
                 </ModalHeader>
                     <ModalBody>
-                        <MyForm
+
+                        <PollForm
 
                             poll={poll}
                             isUpdate={true}
