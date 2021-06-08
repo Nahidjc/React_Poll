@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, CustomInput, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 class ParticipationForm extends Component {
 
     state = {
@@ -95,13 +95,17 @@ class ParticipationForm extends Component {
                                 />
                                 {opt.value}
                                 <span
-                                    style={{ padding: '5px 20px', background: 'green', color: 'white', borderRadius: '5px' }}
+                                    style={{
+                                        padding: '5px 20px',
+                                        background: 'green',
+                                        color: 'white',
+                                        borderRadius: '5px'
+                                    }}
                                     className='ml-auto'
-
-                                >{opt.vote}</span>
-
+                                >
+                                    {opt.vote}
+                                </span>
                                 <span
-
                                     style={{
                                         padding: '5px 20px',
                                         background: 'orange',
@@ -125,7 +129,7 @@ class ParticipationForm extends Component {
                         </FormGroup>
                     ))
                 }
-                <FormGroup className='my-3'>
+                <FormGroup className='my-4'>
                     <Label>
                         Enter Your Name
                     </Label>
@@ -139,7 +143,7 @@ class ParticipationForm extends Component {
                     {this.state.errors.name && <FormFeedback>{this.state.name}</FormFeedback>}
 
                 </FormGroup>
-                <Button type='submit'>Submit Your Opinion</Button>
+                <Button className='bg-success' type='submit'>Submit Your Opinion</Button>
 
             </Form>
         )
