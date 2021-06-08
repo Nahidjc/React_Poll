@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
-const MyForm = ({ 
+const MyForm = ({
     title,
     description,
     options,
     errors,
     buttonValue,
     handleChange,
-    handleOptionChange, 
+    handleOptionChange,
     createOption,
     deleteOption,
     handleSubmit }) => <Form onSubmit={handleSubmit}>
@@ -40,33 +40,33 @@ const MyForm = ({
         </FormGroup>
 
         <FormGroup>
-            <Label style={{padding:'15px'}}>
+            <Label style={{ padding: '15px' }}>
                 Enter Options
                 <span style={{
-                    marginLeft:'30px',
-                    background:'green',
-                    padding:'5px',
-                    color:'white',
-                    borderRadius:'5px',
-                    cursor:'pointer'
+                    marginLeft: '30px',
+                    background: 'green',
+                    padding: '5px',
+                    color: 'white',
+                    borderRadius: '5px',
+                    cursor: 'pointer'
                 }}
-                onClick={createOption}
-                 >Add Options</span>
+                    onClick={createOption}
+                >Add Options</span>
             </Label>
-            {options.map((opt,index)=>(
+            {options.map((opt, index) => (
                 <div key={opt.id} className="d-flex my-2">
-                <Input
-                value={opt.value}
-                onChange={e => handleOptionChange(e,index)}
-                invalid={ errors.options && errors.options[index] ? true : false }
-                 />
-                 <Button
-                 color='danger'
-                 disabled={options.length <= 2}
-                 className='ml-2'
-                 onClick={()=> deleteOption(index)}
-                 >
-                 Delete
+                    <Input
+                        value={opt.value}
+                        onChange={e => handleOptionChange(e, index)}
+                        invalid={errors.options && errors.options[index] ? true : false}
+                    />
+                    <Button
+                        color='danger'
+                        disabled={options.length <= 2}
+                        className='ml-2'
+                        onClick={() => deleteOption(index)}
+                    >
+                        Delete
                  </Button>
 
                 </div>
