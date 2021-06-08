@@ -59,9 +59,9 @@ class ParticipationForm extends Component {
     render() {
         return (
             <Form onSubmit={this.handleSubmit}>
-                <div className='d-flex'>
+                <div className='d-flex  justify-content-end'>
 
-                    <h4 className='m-2'>Options</h4>
+                    <h4>Options</h4>
                     <Button
                         color='warning'
                         type='button'
@@ -94,6 +94,7 @@ class ParticipationForm extends Component {
                                     invalid={this.state.errors.selectedOption ? true : false}
                                 />
                                 {opt.value}
+
                                 <span
                                     style={{
                                         padding: '5px 20px',
@@ -105,6 +106,7 @@ class ParticipationForm extends Component {
                                 >
                                     {opt.vote}
                                 </span>
+
                                 <span
                                     style={{
                                         padding: '5px 20px',

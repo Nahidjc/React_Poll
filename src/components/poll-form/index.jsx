@@ -75,7 +75,7 @@ class PollForm extends Component {
                 this.props.submit(poll)
                 alert('Update Successfully')
             } else {
-                this.props.submit()
+                this.props.submit(poll)
                 event.target.reset()
                 this.setState({
                     title: '',

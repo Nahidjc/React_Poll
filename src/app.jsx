@@ -45,7 +45,16 @@ class App extends Component {
         this.setState({ selectPoll: poll });
     }
     handleSearch = searchTerm => {
+        this.setState({
+            searchTerm
+        })
 
+    }
+
+    performSearch = () => {
+        return this.state.polls.filter(poll =>
+            poll.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+        )
     }
 
     getOpinion = (response) => {
@@ -66,12 +75,13 @@ class App extends Component {
 
     }
     render() {
+        const polls = this.performSearch();
         return (
             <Container className='my-5'>
                 <Row>
                     <Col md={4}>
                         <Sidebar
-                            polls={this.state.polls}
+                            polls={polls}
                             searchTerm={this.state.searchTerm}
                             handleSearch={this.handleSearch}
                             selectedPoll={this.selectedPoll}
